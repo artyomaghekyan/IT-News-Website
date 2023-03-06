@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% if action == 'edit' %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit</button>
+
+</form>
+
+{% elif action == 'delete' %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <strong>Are you sure you want to delete {{news.title}}?</strong>
+    <button type="submit">Delete</button>
+</form>
+
+{% elif action == 'create' %}
+
+<form action="" enctype="multipart/form-data" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Upload</button>
+</form>
+
+{% endif %}
+
+{% endblock content %}
